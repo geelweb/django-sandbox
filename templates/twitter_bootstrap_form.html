@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% load twitter_bootstrap %}
+
+{% block page_title %}Twitter Bootstrap Form{% endblock %}
+{% block summary %}
+<p></p>
+<a class="btn btn-primary"
+    href="https://github.com/geelweb/django-twitter-bootstrap-form/archive/master.zip">Download</a>
+{% endblock %}
+
+{% block github_ribbon %}
+    <a href="https://github.com/geelweb/django-twitter-bootstrap-form"><img
+        style="position: fixed; top: 0; right: 0; border: 0; z-index: 9999;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+        alt="Fork me on GitHub"></a>
+{% endblock %}
+
+{% block content %}
+<style>
+.demo-form {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 30px;
+    position: relative;
+}
+.demo-default:after,
+.demo-inline:after,
+.demo-horizontal:after,
+.demo-search:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+.demo-default:after {
+    content: "Default styles";
+}
+.demo-search:after {
+    content: "Search form";
+}
+.demo-inline:after {
+    content: "Inline form";
+}
+.demo-horizontal:after {
+    content: "Horizontal form";
+}
+</style>
+<h2>Install</h2>
+<div class="row">
+    <div class="span12">
+        <strong>settings.py</strong>
+        <p>Add the application
+        geelweb.django.twitter_bootstrap_form to your INSTALLED_APPS
+
+<pre>
+INSTALLED_APPS = (
+    ...
+    'geelweb.django.twitter_bootstrap_form'
+)
+</pre>
+
+        <strong>Html template</strong>
+        <p>You obly have to load the filters and use them</p>
+
+<pre>
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+</pre>
+
+    </div>
+</div>
+
+<h2>Default styles</h2>
+<div class="row">
+    <div class="span12">
+        <form class="demo-form demo-default">
+            <fieldset>
+                <legend>Legend</legend>
+                {{ default_form|twitter_bootstrap }}
+                <button type="submit" class="btn">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+class DefaultForm(forms.Form):
+    label_name = forms.CharField(max_length=100,
+                                 help_text="Example block-level help text here.",
+                                 widget=forms.TextInput(attrs={'placeholder': 'Type something...'}))
+    check_me_out = forms.BooleanField(required=False)
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Legend&lt;/legend&gt;
+        {% templatetag openvariable %} form|twitter_bootstrap {% templatetag closevariable %}
+        &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+    </div>
+</div>
+
+
+<h2>Search Form</h2>
+<div class="row">
+    <div class="span12">
+        <form class="demo-form demo-search form-search">
+            {{ search_form|twitter_bootstrap:"search" }}
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+class SearchForm(forms.Form):
+    query = forms.CharField(max_length=100,
+                            widget=forms.TextInput(attrs={'class': 'input-medium search-query'}))
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form class="form-search"&gt;
+    {% templatetag openvariable %} form|twitter_bootstrap:"search" {% templatetag closevariable %}
+    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+    </div>
+</div>
+
+<h2>Inline Form</h2>
+<div class="row">
+    <div class="span12">
+        <form class="demo-form demo-inline form-inline">
+            {{ inline_form|twitter_bootstrap:"inline" }}
+            <button type="submit" class="btn">Sign in</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+class InlineForm(forms.Form):
+    email = forms.EmailField(max_length=100,
+                             widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    password = forms.CharField(max_length=100,
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    remember_me = forms.BooleanField(required=False)
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form class="form-inline"&gt;
+    {% templatetag openvariable %} form|twitter_bootstrap:"inline" {% templatetag closevariable %}
+    &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+    </div>
+</div>
+
+<h2>Horizontal Form</h2>
+<div class="row">
+    <div class="span12">
+        <form class="demo-form demo-horizontal form-horizontal">
+            {{ horizontal_form|twitter_bootstrap:"horizontal" }}
+            <div class="contrl-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+class HorizontalForm(forms.Form):
+    email = forms.EmailField(max_length=100,
+                             widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    password = forms.CharField(max_length=100,
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    remember_me = forms.BooleanField(required=False)
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form class="form-horizontal"&gt;
+    {% templatetag openvariable %} form|twitter_bootstrap:"horizontal" {% templatetag closevariable %}
+    &lt;div class="contrl-group"&gt;
+        &lt;div class="controls"&gt;
+            &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+    </div>
+</div>
+{% endblock %}

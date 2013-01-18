@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="span6">
+        <h2>ContactForm</h2>
+        <p>Add a basic contact form to your django projects.</p>
+        <p><a class="btn" href="{% url contact %}">Demo &raquo;</a></p>
+    </div>
+
+    <div class="span6">
+        <h2>QuickPoll</h2>
+        <p>Propose quick polls on your frontend and register votes.</p>
+        <p><a class="btn" href="{% url quickpoll %}">Demo &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span6">
+        <h2>Twitter Bootstrap Form</h2>
+        <p>Render Django forms as specify in Twitter Bootstrap.</p>
+        <p><a class="btn" href="{% url twitter_bootstrap_form %}">Demo &raquo;</a></p>
+    </div>
+</div>
+{% endblock %}

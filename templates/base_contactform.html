@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block page_title %}ContactForm{% endblock %}
+{% block summary %}
+<p>This application allow you to add a very simple contact form
+on your django project</p>
+<a class="btn btn-primary"
+    href="https://github.com/geelweb/geelweb-django-contactform/archive/stable.zip">Download</a>
+{% endblock %}
+
+{% block github_ribbon %}
+    <a href="https://github.com/geelweb/geelweb-django-contactform"><img
+        style="position: fixed; top: 0; right: 0; border: 0; z-index: 9999;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+        alt="Fork me on GitHub"></a>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span6">
+        {% block subcontent %}{% endblock %}
+    </div>
+
+    <div class="span6">
+        <strong>settings.py</strong>
+        <p>Add the application
+        geelweb.django.contactform to your INSTALLED_APPS</p>
+
+<pre>
+INSTALLED_APPS = (
+    ...
+    'geelweb.django.contactform'
+)
+</pre>
+
+        <p>Define some properties</p>
+
+<pre>
+CONTACTFORM_RECIPIENTS = ['guillaume@geelweb.org']
+CONTACTFORM_SUBJECT_PREFIX = 'mail from the sandbox '
+</pre>
+
+        <p>Configure django.core.mail if not already configured</p>
+
+<pre>
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_HOST_USER = 'this-is-my-username'
+EMAIL_HOST_PASSWORD = 'and-this-is-my-password'
+EMAIL_USE_TLS = True
+</pre>
+
+        <strong>urls.py</strong>
+        <p>Include the url</p>
+
+<pre>
+urlpatterns = patterns('',
+    url(r'^contact$', 'geelweb.django.contactform.views.contact', name='contact'),
+)
+</pre>
+
+        <strong>Html templates</strong>
+        <p>Create two very basic templates</p>
+<pre>
+&lt;!-- contactform/contact.html --&gt;
+
+&lt;form action="{% templatetag openblock %} url contact {% templatetag closeblock %}" method="post"&gt;
+    {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+    {% templatetag openvariable %} form.as_p {% templatetag closevariable %}
+    &lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+</pre>
+
+<pre>
+&lt;!--  contactform/thanks.html --&gt;
+
+&lt;h1&gt;Thanks for your message&lt;/h1&gt;
+&lt;div&gt;Your message has been sent, we'll try to answer you as quickly as possible.&lt;/div&gt;
+</pre>
+
+        <p>Finaly add a link to your contact form</p>
+<pre>
+&lt;a href="{% templatetag openblock %} url contact {% templatetag closeblock %}"&gt;Contact&lt;/a&gt;
+</pre>
+    </div>
+</div>
+{% endblock %}

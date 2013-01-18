@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load tags %}
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Geelweb Django Sandbox</title>
+
+        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" />
+        <!--script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script-->
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+
+        {% block headscripts %}{% endblock %}
+
+    </head>
+    <body>
+		<div class="navbar navbar-fixed-top">
+      	    <div class="navbar-inner">
+        	    <div class="container">
+          		    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            		    <span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+          			</a>
+
+                    <a class="brand" href="{% url home %}">Sandbox</a>
+
+                    <div class="nav-collapse collapse">
+         			    <ul class="nav">
+                            <li class="{% active request "^/$" %}"><a href="{% url home %}">Accueil</a></li>
+                            <li class="{% active request "^/quickpoll-app" %}"><a href="{% url quickpoll %}">QuickPoll</a></li>
+                            <li class="{% active request "^/contact" %}"><a href="{% url contact %}">Contact</a></li>
+                            <li class="{% active request "^/twitter-bootstrap-form" %}"><a href="{% url twitter_bootstrap_form %}">Twitter Bootstrap</a></li>
+            			</ul>
+          			</div><!--/.nav-collapse -->
+        		</div>
+      		</div>
+    	</div>
+
+        <div id="wrap">
+            <div class="container">
+                <div class="hero-unit">
+                    <h1>{% block page_title %}Geelweb's Django Sandbox{% endblock %}</h1>
+                    {% block summary %}<p>Find here demos of all the Geelweb's Django Apps</p>{% endblock %}
+                </div>
+                {% block content %}{% endblock %}
+            </div>
+            <div id="push"></div>
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="span9">
+                        <p class="muted credit">&copy; Geelweb - Guillaume Luchet - 2013</p>
+                    </div>
+                    <div class="span3">
+                        <p class="muted">
+                            <a href="http://www.djangoproject.com/"><img
+                                src="https://www.djangoproject.com/m/img/badges/djangomade124x25_grey.gif"
+                                border="0" alt="Made with Django." title="Made with Django." /></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+      	</div>
+
+        {% block github_ribbon %}{% endblock %}
+
+        <style>
+            html, body {
+                height: 100%;
+            }
+            #wrap {
+                height: auto !important;
+                margin: 0 auto -60px;
+                min-height: 100%;
+            }
+            #push, #footer {
+                height: 60px;
+            }
+            #footer {
+                background-color: #f5f5f5;
+            }
+            .container .muted {
+                margin: 20px 0;
+            }
+        </style>
+    </body>
+</html>

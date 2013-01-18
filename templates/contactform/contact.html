@@ -1,0 +1,22 @@
+{% extends "base_contactform.html" %}
+{% load twitter_bootstrap %}
+
+{% block subcontent %}
+<form action="{% url contact %}" method="post" class="form-horizontal">
+    {% csrf_token %}
+
+    <!--div class="control-group">
+        <label class="control-label" for="inputEmail">Email</label>
+        <div class="controls">
+            <input type="text" id="inputEmail" placeholder="Email">
+        </div>
+    </div-->
+
+    {{ form|twitter_bootstrap:"horizontal" }}
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-inverse">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

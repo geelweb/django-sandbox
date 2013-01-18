@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block headscripts %}
+<link href="{{ STATIC_URL }}quickpoll/css/main.css" rel="stylesheet" media="screen" />
+<script data-main="{{ STATIC_URL }}quickpoll/js/main.js" src="{{ STATIC_URL }}quickpoll/js/lib/vendor/require.js"></script>
+{% endblock %}
+
+{% block page_title %}QuickPoll{% endblock %}
+{% block summary %}
+<p>The QuickPoll application is designed to propose polls and
+register votes on your frontends.</p>
+<a class="btn btn-primary"
+    href="https://github.com/geelweb/geelweb-django-quickpoll/archive/stable.zip">Download</a>
+{% endblock %}
+
+{% block github_ribbon %}
+    <a href="https://github.com/geelweb/geelweb-django-quickpoll"><img
+        style="position: fixed; top: 0; right: 0; border: 0; z-index: 9999;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+        alt="Fork me on GitHub"></a>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span6">
+        <p>Create a poll, add the questions, the choices, define the display rules
+        questions, then start register votes.</p>
+
+        <p>The QuickPoll application is designed to not be intrusive, a ribbon is simply
+        added on the left of your website if a poll is available, click it then vote !</p>
+
+        <p>You can replace the ribbon by a button, or display a button and a
+        ribbon. Every elements with the <em>open-poll</em> class will open the
+        QuickPoll window.</p>
+
+        <p><a class="btn btn-quickpoll open-poll" href="#">QuickPoll</a></p>
+    </div>
+
+    <div class="span6">
+        <strong>settings.py</strong>
+        <p>Add the application
+        geelweb.django.quickpoll to your INSTALLED_APPS
+
+<pre>
+INSTALLED_APPS = (
+    ...
+    'geelweb.django.quickpoll'
+)
+</pre>
+
+        <strong>urls.py</strong>
+        <p>Include the QuickPoll urls</p>
+
+<pre>
+urlpatterns = patterns('',
+    url(r'^quickpoll/', include('geelweb.django.quickpoll.urls')),
+)
+</pre>
+
+        <strong>Html template</strong>
+        <p>Include the script to add the ribbon</p>
+<pre>
+&lt;link href="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}quickpoll/css/main.css" rel="stylesheet" media="screen" /&gt;
+&lt;script data-main="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}quickpoll/js/main.js" src="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}quickpoll/js/lib/vendor/require.js"&gt;&lt;/script&gt;
+</pre>
+    </div>
+
+<style>
+.btn-quickpoll {
+    background-color: #5bb75b;
+    background-image: -moz-linear-gradient(center top, #73b200, #73a100);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-quickpoll:hover {
+    color: #fff;
+    background-color: #73a100;
+}
+</style>
+{% endblock %}
