@@ -1,5 +1,10 @@
 # Django settings for sandbox project.
 import os
+try:
+    import sandbox.local_settings
+except:
+    pass
+
 BASE_PATH=os.path.join(os.path.dirname(__file__))
 
 APPLICATION_ENV = 'development'
@@ -134,7 +139,7 @@ INSTALLED_APPS = (
     'geelweb.django.contactform',
     'geelweb.django.quickpoll',
     'geelweb.django.twitter_bootstrap_form',
-    'tags',
+    'sandbox.tags',
 )
 
 # A sample logging configuration. The only tangible logging
