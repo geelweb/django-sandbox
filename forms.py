@@ -10,18 +10,10 @@ class SearchForm(forms.Form):
     query = forms.CharField(max_length=100,
                             widget=forms.TextInput(attrs={'class': 'input-medium search-query'}))
 
-class InlineForm(forms.Form):
+class LoginForm(forms.Form):
     email = forms.EmailField(max_length=100,
                              widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(max_length=100,
                                widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
     remember_me = forms.BooleanField(required=False)
-
-class HorizontalForm(forms.Form):
-    email = forms.EmailField(max_length=100,
-                             widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-    password = forms.CharField(max_length=100,
-                               widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
-    remember_me = forms.BooleanField(required=False)
-
 

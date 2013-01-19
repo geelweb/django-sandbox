@@ -157,7 +157,7 @@ class SearchForm(forms.Form):
     <div class="span12">
 <pre>
 # forms.py
-class InlineForm(forms.Form):
+class LoginForm(forms.Form):
     email = forms.EmailField(max_length=100,
                              widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(max_length=100,
@@ -180,7 +180,7 @@ class InlineForm(forms.Form):
     <div class="span12">
         <form class="demo-form demo-horizontal form-horizontal">
             {{ horizontal_form|twitter_bootstrap:"horizontal" }}
-            <div class="contrl-group">
+            <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn">Sign in</button>
                 </div>
@@ -193,7 +193,7 @@ class InlineForm(forms.Form):
     <div class="span12">
 <pre>
 # forms.py
-class HorizontalForm(forms.Form):
+class LoginForm(forms.Form):
     email = forms.EmailField(max_length=100,
                              widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(max_length=100,
@@ -205,7 +205,7 @@ class HorizontalForm(forms.Form):
 
 &lt;form class="form-horizontal"&gt;
     {% templatetag openvariable %} form|twitter_bootstrap:"horizontal" {% templatetag closevariable %}
-    &lt;div class="contrl-group"&gt;
+    &lt;div class="control-group"&gt;
         &lt;div class="controls"&gt;
             &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
         &lt;/div&gt;

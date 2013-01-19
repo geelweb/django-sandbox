@@ -19,7 +19,7 @@ def twitter_bootstrap_form(request):
             'twitter_bootstrap_form.html', {
                 'default_form': DefaultForm(),
                 'search_form': SearchForm(),
-                'inline_form': InlineForm(),
-                'horizontal_form': HorizontalForm(),
+                'inline_form': LoginForm(prefix="inline"),
+                'horizontal_form': LoginForm(prefix="horizontal"),
             }, context_instance=RequestContext(request))
 
