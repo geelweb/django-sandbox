@@ -75,7 +75,7 @@ else:
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 if APPLICATION_ENV == 'production':
-    STATIC_URL = 'http://static.geelweb.org/sandbox/static/'
+    STATIC_URL = 'http://static2.geelweb.org/sandbox/'
 else:
     STATIC_URL = '/static/'
 
@@ -83,7 +83,7 @@ else:
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 if APPLICATION_ENV == 'production':
-    ADMIN_MEDIA_PREFIX = 'http://static.geelweb.org/sandbox/admin/'
+    ADMIN_MEDIA_PREFIX = 'http://static2.geelweb.org/sandbox/admin/'
 else:
     ADMIN_MEDIA_PREFIX = '/static/admin/'
 
@@ -109,6 +109,7 @@ SECRET_KEY = '987dd7c)!1q=lvjmfqq5pli=4+$%8hvq)hk(0!(s^ifg+l&uuj'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
