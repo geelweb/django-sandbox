@@ -214,4 +214,106 @@ class LoginForm(forms.Form):
 </pre>
     </div>
 </div>
+
+<h2>Checkboxes and radios</h2>
+
+<h3>Default (stacked)</h3>
+
+<div class="row">
+    <div class="span12">
+        <form class="demo-form">
+            {{ chbx_rdio_form|twitter_bootstrap }}
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+CHOICES = (
+        ('option1', "Option one is this and that—be sure to include why it's great"),
+        ('option2', "Option two can be something else and selecting it will deselect option one"),
+        )
+
+class MyForm(forms.Form):
+    opt1 = forms.BooleanField(label="Option one is this and that—be sure to include why it's great")
+    radio = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form&gt;
+    {% templatetag openvariable %} form|twitter_bootstrap {% templatetag closevariable %}
+&lt;/form&gt;
+
+</pre>
+    </div>
+</div>
+
+<h3>Inline checkboxes</h3>
+
+<div class="row">
+    <div class="span12">
+        <form class="demo-form">
+            {{ inline_chbx|twitter_bootstrap:"inline" }}
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+class MyForm(forms.Form):
+    opt1 = forms.BooleanField(label="1")
+    opt2 = forms.BooleanField(label="2")
+    opt3 = forms.BooleanField(label="3")
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form&gt;
+    {% templatetag openvariable %} form|twitter_bootstrap:"inline" {% templatetag closevariable %}
+&lt;/form&gt;
+
+</pre>
+    </div>
+</div>
+
+<h2>Selects</h2>
+<div class="row">
+    <div class="span12">
+        <form class="demo-form">
+            {{ select_form|twitter_bootstrap }}
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+<pre>
+# forms.py
+SELECT_CHOICES = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        )
+
+class MyForm(forms.Form):
+    select1 = forms.ChoiceField(choices=SELECT_CHOICES, label="")
+    select2 = forms.ChoiceField(widget=forms.SelectMultiple, choices=SELECT_CHOICES, label="")
+
+# template.html
+{% templatetag openblock %} load twitter_bootstrap {% templatetag closeblock %}
+
+&lt;form&gt;
+    {% templatetag openvariable %} form|twitter_bootstrap {% templatetag closevariable %}
+&lt;/form&gt;
+
+</pre>
+    </div>
+</div>
 {% endblock %}

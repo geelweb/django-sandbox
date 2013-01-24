@@ -21,5 +21,8 @@ def twitter_bootstrap_form(request):
                 'search_form': SearchForm(),
                 'inline_form': LoginForm(prefix="inline"),
                 'horizontal_form': LoginForm(prefix="horizontal"),
+                'chbx_rdio_form': CheckboxRadioForm(),
+                'inline_chbx': InlineCheckboxesForm(),
+                'select_form': SelectForm(),
             }, context_instance=RequestContext(request))
 
