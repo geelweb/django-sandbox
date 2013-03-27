@@ -26,14 +26,14 @@
             			<span class="icon-bar"></span>
           			</a>
 
-                    <a class="brand" href="{% url home %}">Sandbox</a>
+                    <a class="brand" href="{% url 'home' %}">Sandbox</a>
 
                     <div class="nav-collapse collapse">
          			    <ul class="nav">
-                            <li class="{% active request "^/$" %}"><a href="{% url home %}">Accueil</a></li>
-                            <li class="{% active request "^/quickpoll-app" %}"><a href="{% url quickpoll %}">QuickPoll</a></li>
-                            <li class="{% active request "^/contact" %}"><a href="{% url contact %}">Contact</a></li>
-                            <li class="{% active request "^/twitter-bootstrap-form" %}"><a href="{% url twitter_bootstrap_form %}">Twitter Bootstrap</a></li>
+                            <li class="{% active request "^/$" %}"><a href="{% url 'home' %}">Accueil</a></li>
+                            <li class="{% active request "^/quickpoll-app" %}"><a href="{% url 'quickpoll' %}">QuickPoll</a></li>
+                            <li class="{% active request "^/contact" %}"><a href="{% url 'contact' %}">Contact</a></li>
+                            <li class="{% active request "^/twitter-bootstrap-form" %}"><a href="{% url 'twitter_bootstrap_form' %}">Twitter Bootstrap</a></li>
             			</ul>
           			</div><!--/.nav-collapse -->
         		</div>

@@ -2,7 +2,7 @@
 {% load twitter_bootstrap %}
 
 {% block subcontent %}
-<form action="{% url contact %}" method="post" class="form-horizontal">
+<form action="{% url 'contact' %}" method="post" class="form-horizontal">
     {% csrf_token %}
 
     <!--div class="control-group">
