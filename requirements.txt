@@ -1,0 +1,8 @@
+Django==1.5
+django-contactform==0.1
+django-dashboard==0.1
+django-navhelper==0.1
+django-quickpoll==0.1
+django-twitterbootstrap-form==0.2
+django-widgets==1.0
+psycopg2==2.4.6
